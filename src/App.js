@@ -1,25 +1,58 @@
-import { STAFFS } from './staffs'
-import { Staff } from './components/Staff'
+// import { STAFFS } from './staffs'
+// import { Staff } from './components/Staff'
 import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
+import React, { Component } from 'react';
+import Menu from './components/MenuComponent';
+import { DISHES } from './shared/dishes';
 
-function App() {
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="app"> 
+    this.state = {
+      dishes: DISHES
+    };
+  }
+  render() {
+    return (
+      <div>
         <Navbar dark color="primary">
-          <NavbarBrand>Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
+          <div className="container">
+            <NavbarBrand>Ứng dụng quản lý nhân viên 1.0</NavbarBrand>
+          </div>
         </Navbar>
-      
-      
-      <div className='app-body'>
-        {STAFFS.map(s => {
-          return <Staff id="ai đi" name={s.name} />;
-        })}
+        <Menu dishes={this.state.dishes} />
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+// function App() {
+
+//   const dish={id:0, name:'Uthappizza'}  
+//   return (
+//     <div key={dish.id} className="col-12 mt-5">
+//       <Media tag="li">
+//         <Media body className="ml-5">
+//           <Media heading>{dish.name}</Media>
+//         </Media>
+//       </Media>
+//     </div>
+//     // <div className="app"> 
+//     //     <Navbar dark color="primary">
+//     //       <NavbarBrand>Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
+//     //     </Navbar>
+      
+      
+//     //   <div className='app-body'>
+//     //     {STAFFS.map(s => {
+//     //       return <Staff id="ai đi" name={s.name} />;
+//     //     })}
+//     //   </div>
+//     // </div>
+//   );
+// }
 
 export default App;
 
